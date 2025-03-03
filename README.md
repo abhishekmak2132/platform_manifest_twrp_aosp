@@ -108,3 +108,40 @@ lunch twrp_SM-A236E-eng
 
 # Build the recovery image
 mka recoveryimage
+name: Build TWRP
+
+on:
+  push:
+    branches:
+      - twrp-12.1
+  pull_request:
+    branches:
+      - twrp-12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Repo
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y repo
+
+    - name: Initialize Repo
+      run: repo init -u https://github.com/abhishekmak2132/platform_manifest_twrp_aosp.git -b twrp-12.1
+
+    - name: Sync Repo
+      run: repo sync
+
+    - name: Setup build environment
+      run: |
+        export ALLOW_MISSING_DEPENDENCIES=true
+        . build/envsetup.sh
+        lunch twrp_SM-A236E-eng
+
+    - name: Build recovery image
+      run: mka recoveryimage
