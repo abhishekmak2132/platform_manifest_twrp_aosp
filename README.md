@@ -1,4 +1,32 @@
-Let's verify the content of the workflow file and check the repository settings to ensure that everything is correctly configured. I'll start by fetching the `.github/workflows/build-twrp.yml` file from your repository.It seems I am unable to fetch the workflow file. Please manually verify that the `.github/workflows/build-twrp.yml` file exists in your repository and is correctly formatted. You can check this in the "Code" tab of your repository under `.github/workflows`. If the file exists and is correctly set up, try pushing a new commit to the `twrp-12.1` branch to trigger the workflow.It seems there was an issue fetching the jobs for the given workflow run ID. To troubleshoot further, please:
+name: Build TWRP
+
+on:
+  push:
+    branches:
+      - twrp-12.1
+  pull_request:
+    branches:
+      - twrp-12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Build TWRP
+      run: |
+        echo "Building TWRP..."
+        # Add your build commands here
+        # Example:
+        # ./gradlew buildLet's verify the content of the workflow file and check the repository settings to ensure that everything is correctly configured. I'll start by fetching the `.github/workflows/build-twrp.yml` file from your repository.It seems I am unable to fetch the workflow file. Please manually verify that the `.github/workflows/build-twrp.yml` file exists in your repository and is correctly formatted. You can check this in the "Code" tab of your repository under `.github/workflows`. If the file exists and is correctly set up, try pushing a new commit to the `twrp-12.1` branch to trigger the workflow.It seems there was an issue fetching the jobs for the given workflow run ID. To troubleshoot further, please:
 
 1. Verify the `.github/workflows/build-twrp.yml` file exists in your repository.
 2. Ensure the file is correctly formatted and contains the appropriate content.
