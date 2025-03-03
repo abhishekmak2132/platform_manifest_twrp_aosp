@@ -1,4 +1,17 @@
-cd <twrp>
+# Initialize the repository
+repo init -u https://github.com/abhishekmak2132/platform_manifest_twrp_aosp.git -b twrp-12.1
+
+# Synchronize the repository
+repo sync
+
+# Setup the build environment
+cd twrp
+export ALLOW_MISSING_DEPENDENCIES=true
+. build/envsetup.sh
+lunch twrp_SM-A236E-eng
+
+# Build the recovery image
+mka recoveryimagecd <twrp>
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch twrp_SM-A236E-eng## Submitting Patches ##
