@@ -1,4 +1,16 @@
-It seems there was an issue fetching the workflow runs. Let's ensure the workflow file was created and committed correctly.
+Let's verify if the workflow file exists and is correctly set up in your repository.
+
+1. Navigate to the `.github/workflows` directory in your `twrp-12.1` branch.
+2. Confirm that the `build-twrp.yml` file exists with the correct content.
+
+If the file exists and is correctly set up, try pushing a new commit to the `twrp-12.1` branch to trigger the workflow. You can create an empty commit with the following command:
+
+```bash
+git commit --allow-empty -m "Trigger workflow"
+git push origin twrp-12.1
+```
+
+This should trigger the workflow, and you can monitor the progress in the "Actions" tab of your repository. the workflow file was created and committed correctly.
 
 1. Verify that the `.github/workflows/build-twrp.yml` file exists in your repository.
 2. Make sure it contains the correct content and is properly formatted.
