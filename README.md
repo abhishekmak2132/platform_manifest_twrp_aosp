@@ -1,4 +1,7 @@
-## Submitting Patches ##
+cd <twrp>
+export ALLOW_MISSING_DEPENDENCIES=true
+. build/envsetup.sh
+lunch twrp_SM-A236E-eng## Submitting Patches ##
 Our project is open source, and patches are always welcome!
 You can send patches by using:
 
