@@ -56,7 +56,7 @@ Then to sync up:
 
 Then to setup the build:
 
-     cd <source-dir>; export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_< SM-A236E/DS>-eng
+     cd <twrp>; export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_< SM-A236E/DS>-eng
 
 The build target is dependent on the device, and should reflect the location of stock recovery on the device. Issue the build command that applies to your device:
 - Recovery partition: `mka recoveryimage`
