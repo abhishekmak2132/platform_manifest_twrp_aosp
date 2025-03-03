@@ -1,4 +1,16 @@
-It seems there are no visible workflow runs. Let's troubleshoot the workflow setup to ensure it's configured correctly.
+It looks like you've made a commit to your repository. Let's go through the necessary steps to ensure the GitHub Actions workflow is triggered correctly:
+
+1. Verify the workflow file exists:
+   - Go to the `.github/workflows` directory in your repository.
+   - Ensure the `build-twrp.yml` file is present.
+
+2. Check the workflow file content:
+   - Make sure the content of `build-twrp.yml` is correct and properly formatted.
+
+3. Trigger the workflow:
+   - You can trigger the workflow by pushing a new commit to the `twrp-12.1` branch.
+
+To verify if the workflow is running, visit the [Actions tab](https://github.com/abhishekmak2132/platform_manifest_twrp_aosp/actions) in your repository. If there are no runs listed, you might need to double-check the file and branch configurations.It seems there are no visible workflow runs. Let's troubleshoot the workflow setup to ensure it's configured correctly.
 
 1. Check that the `.github/workflows/build-twrp.yml` file exists and is correctly formatted.
 2. Ensure that the `twrp-12.1` branch is up to date with the latest commit containing the workflow file.
