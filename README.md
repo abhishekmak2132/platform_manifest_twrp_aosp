@@ -1,4 +1,58 @@
+To create and configure a GitHub Actions workflow for your repository, follow these steps:
+
+1. **Create the Workflow File**:
+   - Create a new directory `.github/workflows` in the root of your repository if it doesn't already exist.
+   - Inside the `.github/workflows` directory, create a new file named `build-twrp.yml`.
+
+2. **Add Configuration to the Workflow File**:
+   - Open the `build-twrp.yml` file and add the following configuration:
+
+```yaml
 name: Build TWRP
+
+on:
+  push:
+    branches:
+      - twrp-12.1
+  pull_request:
+    branches:
+      - twrp-12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Build TWRP
+      run: |
+        echo "Building TWRP..."
+        # Add your build commands here
+        # Example:
+        # ./gradlew build
+```
+
+3. **Push the Changes**:
+   - Commit and push the changes to the `twrp-12.1` branch.
+
+```sh
+git add .github/workflows/build-twrp.yml
+git commit -m "Add GitHub Actions workflow for building TWRP"
+git push origin twrp-12.1
+```
+
+4. **Verify the Workflow**:
+   - Go to the [Actions tab](https://github.com/abhishekmak2132/platform_manifest_twrp_aosp/actions) in your repository to see if the workflow is triggered.
+   - You should see a new workflow run listed. Click on it to see the details and logs.
+
+This setup will trigger the workflow on every push or pull request to the `twrp-12.1` branch. Adjust the build commands as per your project's requirements.name: Build TWRP
 
 on:
   push:
