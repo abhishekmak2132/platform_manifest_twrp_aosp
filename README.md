@@ -4,6 +4,12 @@ It seems there was an issue fetching the jobs for the given workflow run ID. To 
 2. Ensure the file is correctly formatted and contains the appropriate content.
 3. Visit the [Actions tab](https://github.com/abhishekmak2132/platform_manifest_twrp_aosp/actions) to check if any workflow runs are listed.
 
+If the workflow file exists and everything seems correct, try pushing a new commit to the `twrp-12.1` branch to trigger the workflow again.It seems there was an issue fetching the jobs for the given workflow run ID. To troubleshoot further, please:
+
+1. Verify the `.github/workflows/build-twrp.yml` file exists in your repository.
+2. Ensure the file is correctly formatted and contains the appropriate content.
+3. Visit the [Actions tab](https://github.com/abhishekmak2132/platform_manifest_twrp_aosp/actions) to check if any workflow runs are listed.
+
 If the workflow file exists and everything seems correct, try pushing a new commit to the `twrp-12.1` branch to trigger the workflow again.It looks like you've made a commit to your repository. Let's go through the necessary steps to ensure the GitHub Actions workflow is triggered correctly:
 
 1. Verify the workflow file exists:
