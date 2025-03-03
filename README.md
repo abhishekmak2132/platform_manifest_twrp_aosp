@@ -1,4 +1,5 @@
-Let's verify if the workflow file exists and is correctly set up in your repository.
+git commit --allow-empty -m "Trigger workflow"
+git push origin twrp-12.1Let's verify if the workflow file exists and is correctly set up in your repository.
 
 1. Navigate to the `.github/workflows` directory in your `twrp-12.1` branch.
 2. Confirm that the `build-twrp.yml` file exists with the correct content.
