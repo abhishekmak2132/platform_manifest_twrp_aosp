@@ -1,4 +1,45 @@
-It looks like you are trying to commit changes to your repository, and you have two options for the repository: `twrp` and `abhishekmak`. To ensure your changes are committed to the correct repository and branch, follow these steps:
+name: Build TWRP
+
+on:
+  push:
+    branches:
+      - twrp-12.1
+  pull_request:
+    branches:
+      - twrp-12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Set up Repo
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y repo
+
+    - name: Initialize Repo
+      run: repo init -u https://github.com/abhishekmak2132/platform_manifest_twrp_aosp.git -b twrp-12.1
+
+    - name: Sync Repo
+      run: repo sync
+
+    - name: Setup build environment
+      run: |
+        export ALLOW_MISSING_DEPENDENCIES=true
+        . build/envsetup.sh
+        lunch twrp_SM-A236E-eng
+
+    - name: Build recovery image
+      run: mka recoveryimageIt looks like you are trying to commit changes to your repository, and you have two options for the repository: `twrp` and `abhishekmak`. To ensure your changes are committed to the correct repository and branch, follow these steps:
 
 1. **Select the Correct Repository**:
    - Make sure you are working in the `abhishekmak2132/platform_manifest_twrp_aosp` repository.
