@@ -113,4 +113,60 @@
 
     <!-- LAST: Remove unused projects for minimal manifest -->
     <include name="remove-minimal.xml"/>
-</manifest>
+</manifest>It looks like you are trying to commit changes to your repository, and you have two options for the repository: `twrp` and `abhishekmak`. To ensure your changes are committed to the correct repository and branch, follow these steps:
+
+1. **Select the Correct Repository**:
+   - Make sure you are working in the `abhishekmak2132/platform_manifest_twrp_aosp` repository.
+
+2. **Create the Workflow File**:
+   - In the root of your repository, create a directory named `.github/workflows` if it doesn't already exist.
+   - Inside the `.github/workflows` directory, create a new file named `build-twrp.yml`.
+
+3. **Add Configuration to the Workflow File**:
+   - Open the `build-twrp.yml` file and add the following configuration:
+
+```yaml
+name: Build TWRP
+
+on:
+  push:
+    branches:
+      - twrp-12.1
+  pull_request:
+    branches:
+      - twrp-12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Build TWRP
+      run: |
+        echo "Building TWRP..."
+        # Add your build commands here
+        # Example:
+        # ./gradlew build
+```
+
+4. **Commit and Push the Changes**:
+   - Add, commit, and push the changes to the `twrp-12.1` branch of the `abhishekmak2132/platform_manifest_twrp_aosp` repository.
+
+```sh
+git add .github/workflows/build-twrp.yml
+git commit -m "Add GitHub Actions workflow for building TWRP"
+git push origin twrp-12.1
+```
+
+5. **Verify the Workflow**:
+   - Go to the [Actions tab](https://github.com/abhishekmak2132/platform_manifest_twrp_aosp/actions) in your repository to see if the workflow is triggered. You should see a new workflow run listed.
+
+This setup will trigger the workflow on every push or pull request to the `twrp-12.1` branch. Adjust the build commands as per your project's requirements.
