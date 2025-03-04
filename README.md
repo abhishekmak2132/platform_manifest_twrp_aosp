@@ -1,3 +1,80 @@
+Here is the full configuration for the GitHub Actions workflow you need to set up for your `platform_manifest_twrp_aosp` repository:
+
+1. **Create the Workflow File**:
+   - In the root of your repository, create a directory named `.github/workflows` if it doesn't already exist.
+   - Inside the `.github/workflows` directory, create a new file named `build-twrp.yml`.
+
+2. **Add Configuration to the Workflow File**:
+   - Open the `build-twrp.yml` file and add the following configuration:
+
+```yaml
+name: Build TWRP
+
+on:
+  push:
+    branches:
+      - twrp-12.1
+  pull_request:
+    branches:
+      - twrp-12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Set up Repo
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y repo
+
+    - name: Initialize Repo
+      run: repo init -u https://github.com/abhishekmak2132/platform_manifest_twrp_aosp.git -b twrp-12.1
+
+    - name: Sync Repo
+      run: repo sync
+
+    - name: Setup build environment
+      run: |
+        export ALLOW_MISSING_DEPENDENCIES=true
+        . build/envsetup.sh
+        lunch twrp_SM-A236E-eng
+
+    - name: Build recovery image
+      run: mka recoveryimage
+```
+
+3. **Commit and Push the Changes**:
+   - Add, commit, and push the changes to the `twrp-12.1` branch of the `abhishekmak2132/platform_manifest_twrp_aosp` repository.
+
+```sh
+git add .github/workflows/build-twrp.yml
+git commit -m "Add GitHub Actions workflow for building TWRP"
+git push origin twrp-12.1
+```
+
+4. **Verify the Workflow**:
+   - Go to the [Actions tab](https://github.com/abhishekmak2132/platform_manifest_twrp_aosp/actions) in your repository to see if the workflow is triggered.
+
+
+
+
+
+
+
+
+
+
+
+
 git add .github/workflows/build-twrp.yml
 git commit -m "Add GitHub Actions workflow for building TWRP"
 git push origin twrp-12.1steps:
