@@ -1,3 +1,11 @@
+
+
+git add .github/workflows/build-twrp.yml
+git commit -m "Add GitHub Actions workflow for building TWRP"
+git push origin twrp-12.1
+
+
+
 git add .github/workflows/build-twrp.yml
 git commit -m "Add GitHub Actions workflow for building TWRP"
 git push origin twrp-12.1
