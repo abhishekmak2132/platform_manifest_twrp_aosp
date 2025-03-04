@@ -1,4 +1,31 @@
-git add .github/workflows/build-twrp.yml
+steps:
+- name: Checkout repository
+  uses: actions/checkout@v2
+
+- name: Set up JDK 11
+  uses: actions/setup-java@v2
+  with:
+    java-version: '11'
+
+- name: Set up Repo
+  run: |
+    sudo apt-get update
+    sudo apt-get install -y repo
+
+- name: Initialize Repo
+  run: repo init -u https://github.com/abhishekmak2132/platform_manifest_twrp_aosp.git -b twrp-12.1
+
+- name: Sync Repo
+  run: repo sync
+
+- name: Setup build environment
+  run: |
+    export ALLOW_MISSING_DEPENDENCIES=true
+    . build/envsetup.sh
+    lunch twrp_SM-A236E-eng
+
+- name: Build recovery image
+  run: mka recoveryimagegit add .github/workflows/build-twrp.yml
 git commit -m "Add GitHub Actions workflow for building TWRP"
 git push origin twrp-12.1name: Build TWRP
 
